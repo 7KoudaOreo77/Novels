@@ -1,6 +1,6 @@
 # < Novels >
 
-実装機能リストのURLの記載:https://docs.google.com/spreadsheets/d/1IyMqTwwbgS5jfqk1tSpB7HX9Vk_bD2eEqhyU5nr2UYk/edit#gid=885378170
+実装機能リスト:https://docs.google.com/spreadsheets/d/1IyMqTwwbgS5jfqk1tSpB7HX9Vk_bD2eEqhyU5nr2UYk/edit#gid=885378170
 
 ## サイト概要
 ### サイトテーマ
