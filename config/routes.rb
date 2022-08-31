@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
-  root to: "public/homes#top"
-  get 'home/about' => 'public/homes#about', as: "about"
+ devise_for :users,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+ }
+
+# 管理者用
+# URL /admin/sign_in ...
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+ }
+
+ root to: "public/homes#top"
+ get 'home/about' => 'public/homes#about', as: "about"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
