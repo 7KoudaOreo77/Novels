@@ -1,0 +1,56 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-3">
+    <%= render 'users/info', user: @user %>
+    <%= render 'list', book: @book_new %>
+    </div>
+
+
+    <div class="col-md-8 offset-md-1">
+  	 <h2>Book detail</h2>
+  		<table class="table">
+    	  <tbody>
+    	    <tr>
+           <td>
+            <%= link_to user_path(@user.id) do %>
+             <%= image_tag @book.user.get_profile_image(100,100) %><br>
+             <%= @user.name %>
+            <% end %>
+           </td>
+           <td>
+            <%= link_to book_path(@book.id), class:"book_id" do %>
+             <%= @book.title %>
+            <% end %>
+           </td>
+           <td><%= @book.body %></td>
+           <% if @user ==current_user %>
+            <td>
+             <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success edit_book_id" %>
+            </td>
+            <td>
+             <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
+            </td>
+           <% end %>
+
+
+           <% if @novel.favorited_by?(current_user) %>
+            <td>
+             <%= link_to novel_favorites_path(@novel), method: :delete do %>
+              ♥<%= @novel.favorites.count %> いいね
+             <% end %>
+            </td>
+
+           <% else %>
+            <td>
+             <%= link_to novel_favorites_path(@novel), method: :post do %>
+              ♡<%= @novel.favorites.count %> いいね
+             <% end %>
+            </td>
+
+           <% end %>
+
+        </tr>
+       </tbody>
+      </table>
+    </div>
+  </div>

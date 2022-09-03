@@ -21,7 +21,7 @@ Rails.application.routes.draw do
  namespace :public do
   resources :novels, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
    resource :favorites, only: [:create, :destroy]
-   resource :tags, only: [:create, :destroy]
+   resources :tags, only: [:create, :destroy]
    resources :comments, only: [:create, :destroy]
  end
 
