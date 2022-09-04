@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :novels, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
    resource :favorites, only: [:create, :destroy]
    resources :tags, only: [:create, :destroy]
-   resources :comments, only: [:create, :destroy]
+   resources :novel_comments, only: [:create, :destroy]
  end
 
   resources :users, only: [:index, :show, :edit, :update]

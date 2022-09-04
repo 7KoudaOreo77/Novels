@@ -1,6 +1,7 @@
 class Novel < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :novel_comments, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 30000 }
