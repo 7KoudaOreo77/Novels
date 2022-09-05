@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get 'admin/homes/top' => 'homes#top'
 
   resources :users, only: [:index, :show, :edit, :update]
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:index, :create, :destroy]
+  resources :tags, only: [:index, :create, :edit, :update]
  end
 
  namespace :public do
@@ -23,6 +24,9 @@ Rails.application.routes.draw do
    resource :favorites, only: [:create, :destroy]
    resources :tags, only: [:create, :destroy]
    resources :novel_comments, only: [:create, :destroy]
+   collection do
+      get 'search'
+    end
  end
 
   resources :users, only: [:index, :show, :edit, :update]

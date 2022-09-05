@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
    <div class="col-md-3">
-    <%= render 'users/info', user: @user %>
+    <%= render 'public/users/info', user: @user %>
     <%= render 'list', novel: @novel_new %>
     </div>
 
@@ -12,37 +12,42 @@
     	  <tbody>
     	    <tr>
            <td>
-            <%= link_to user_path(@user.id) do %>
+            <% if @novel_tags.present? %>
+             <% @novel_tags.each do |tag| %>
+              <%=tag.name%><%="(#{tag.novels.count})" %>
+             <% end %>
+            <% end %>
+            <%= link_to public_user_path(@user.id) do %>
              <%= image_tag @novel.user.get_profile_image(100,100) %><br>
              <%= @user.name %>
             <% end %>
            </td>
            <td>
-            <%= link_to novel_path(@novel.id), class:"novel_id" do %>
+            <%= link_to public_novel_path(@novel.id), class:"novel_id" do %>
              <%= @novel.title %>
             <% end %>
            </td>
            <td><%= @novel.body %></td>
            <% if @user ==current_user %>
             <td>
-             <%= link_to "Edit", edit_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
+             <%= link_to "Edit", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
             </td>
             <td>
-             <%= link_to "Destroy", novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
+             <%= link_to "Destroy", public_novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
             </td>
            <% end %>
 
 
            <% if @novel.favorited_by?(current_user) %>
             <td>
-             <%= link_to novel_favorites_path(@novel), method: :delete do %>
+             <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
               ♥<%= @novel.favorites.count %> いいね
              <% end %>
             </td>
 
            <% else %>
             <td>
-             <%= link_to novel_favorites_path(@novel), method: :post do %>
+             <%= link_to public_novel_favorites_path(@novel), method: :post do %>
               ♡<%= @novel.favorites.count %> いいね
              <% end %>
             </td>
@@ -62,7 +67,7 @@
        <% end %>
       </div>
       <div>
-       <%= form_with model: [@novel, @novel_comment] do |f| %>
+       <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel) do |f| %>
         <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
         <%= f.submit "送信する" %>
        <% end %>

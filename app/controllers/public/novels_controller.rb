@@ -1,4 +1,4 @@
-class Public::NobelsController < ApplicationController
+class Public::NovelsController < ApplicationController
   def new
     @novel = Novel.new
   end
@@ -8,18 +8,24 @@ class Public::NobelsController < ApplicationController
     @novel.user_id = current_user.id
     @user = current_user
 
+    # save tags
+    tag_list=params[:novel][:tag].split(',')
+
     if @novel.save
+      @novel.save_tag(tag_list)
       flash[:hoge] = "Novel was successfully created."
       redirect_to public_novel_path(@novel.id)
     else
       @novels = Novel.all
       render :index
     end
+
   end
 
   def index
-    @novels = Novel.all
-    @novel = Novel.new
+    @novels = Novel.page(params[:page]).per(10)
+    @tag_list=Tag.all
+    #@novel = Novel.new
     @user = current_user
   end
 
@@ -29,10 +35,13 @@ class Public::NobelsController < ApplicationController
     @novel_new = Novel.new
 
     @novel_comment = NovelComment.new
+    #@novel_tags = @novel.tags
   end
 
   def edit
     @novel = Novel.find(params[:id])
+  #@tag_list=@novel.tags.pluck(:name).join(',')
+
     if @novel.user == current_user
      render "edit"
     else
@@ -43,13 +52,16 @@ class Public::NobelsController < ApplicationController
   def update
     @novel = Novel.find(params[:id])
     @user = current_user
+    tag_list=params[:post][:name].split(',')
 
     if @novel.update(novel_params)
+      @novel.save_tag(tag_list)
       flash[:hoge] = "You have updated novel successfully."
       redirect_to public_novel_path(@novel.id)
     else
       render :edit
     end
+
   end
 
 
@@ -57,6 +69,15 @@ class Public::NobelsController < ApplicationController
     @novel = Novel.find(params[:id])
     @novel.destroy
     redirect_to '/novels'
+  end
+
+  def search
+    if params[:keyword].present?
+      @novels = Novel.where('title LIKE ? or body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @novels = Novel.all
+    end
   end
 
   private

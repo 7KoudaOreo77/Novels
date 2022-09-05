@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_05_023954) do
+ActiveRecord::Schema.define(version: 2022_09_05_092541) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 2022_09_05_023954) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "novel_tags", force: :cascade do |t|
+    t.integer "novel_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["novel_id", "tag_id"], name: "index_novel_tags_on_novel_id_and_tag_id", unique: true
+    t.index ["novel_id"], name: "index_novel_tags_on_novel_id"
+    t.index ["tag_id"], name: "index_novel_tags_on_tag_id"
+  end
+
   create_table "novels", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -107,4 +117,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_023954) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "novel_tags", "novels"
+  add_foreign_key "novel_tags", "tags"
 end

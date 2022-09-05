@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
    <div class="col-md-3">
-    <%= render 'users/info', user: @user %>
+    <%= render 'public/users/info', user: @user %>
      <%= render 'list', novel: @novel %>
    </div>
 
@@ -18,10 +18,15 @@
      </thead>
      <tbody>
 
+     <% @tag_list.each do |list|%>
+      <%=list.name %>
+      <%="(#{list.novels.count})" %><% end %>
+      投稿一覧画面で投稿に紐づくタグを表示
+
        <% @novels.each do |novel| %>
        <tr>
         <td>
-         <%= link_to user_path(novel.user) do %>
+         <%= link_to public_user_path(novel.user) do %>
           <%= image_tag novel.user.get_profile_image(100,100) %>
          <% end %>
         </td>
@@ -31,7 +36,9 @@
          <% end %>
         </td>
         <td><%= novel.body %></td>
+        <td><i class="fas fa-tag"></i><%= novel.tags.map(&:name).join(', ') %></td>
         </tr>
+
        <% end %>
        </tbody>
     </table>

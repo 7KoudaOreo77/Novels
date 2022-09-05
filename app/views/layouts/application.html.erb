@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Novel</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,6 +20,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav ml-auto">
+
+       <%= form_with url: search_public_novels_path, local: true, method: :get do |form| %>
+        <%= form.text_field :keyword %>
+        <%= form.submit "検索" %>
+       <% end %>
+
+
         <% if user_signed_in? %>
          <li>
           <%= link_to public_user_path(current_user.id), class:"nav-link text-light" do %>
@@ -27,7 +34,12 @@
           <% end %>
          </li>
          <li>
-          <%= link_to user_registration_path, class:"nav-link text-light" do %>
+          <%= link_to new_public_novel_path, class:"nav-link text-light" do %>
+           <i class="fas fa-book-open"></i> 新規投稿
+          <% end %>
+         </li>
+         <li>
+          <%= link_to public_users_path, class:"nav-link text-light" do %>
            <i class="fas fa-users"></i> Users
           <% end %>
          </li>
@@ -38,7 +50,24 @@
          </li>
          <li>
           <%= link_to destroy_user_session_path, class:"nav-link text-light", method: :delete do %>
-           <i class="fas fa-sign-out-alt"></i> Log out
+           <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+         </li>
+
+        <% elsif admin_signed_in? %>
+         <li>
+          <%= link_to admin_tags_path, class:"nav-link text-light" do %>
+           <i class="fas fa-users"></i> タグ一覧
+          <% end %>
+         </li>
+         <li>
+          <%= link_to admin_comments_path, class:"nav-link text-light" do %>
+           <i class="fas fa-book-open"></i> コメント一覧
+          <% end %>
+         </li>
+         <li>
+          <%= link_to destroy_user_session_path, class:"nav-link text-light", method: :delete do %>
+           <i class="fas fa-sign-out-alt"></i> ログアウト
           <% end %>
          </li>
         <% else %>
