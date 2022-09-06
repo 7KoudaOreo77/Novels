@@ -11,17 +11,17 @@
      <thead>
       <tr>
        <th></th>
-       <th>Title</th>
-       <th>Opinion</th>
+       <th>題名</th>
+       <th>本文</th>
        <th colspan="3"></th>
       </tr>
      </thead>
      <tbody>
 
+     <h5>タグリスト</h5>
      <% @tag_list.each do |list|%>
       <%=list.name %>
       <%="(#{list.novels.count})" %><% end %>
-      投稿一覧画面で投稿に紐づくタグを表示
 
        <% @novels.each do |novel| %>
        <tr>

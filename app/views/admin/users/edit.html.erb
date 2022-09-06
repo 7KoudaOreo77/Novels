@@ -1,0 +1,58 @@
+<!--<h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集Admin::Customers#edit</h1>-->
+<!--<p>Find me in app/views/admin/customers/edit.html.erb</p>-->
+<!--<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>-->
+
+<!-- <p>会員ID</p><%= @customer.id %>-->
+
+<!--  <div class="field">-->
+<!--   <p>氏名-->
+<!--    <%= f.label :"(姓)" %>-->
+<!--     <%= f.text_field :last_name %>-->
+<!--    <%= f.label :"(名)" %>-->
+<!--     <%= f.text_field :first_name %>-->
+<!--   </p>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--   <p>フリガナ-->
+<!--    <%= f.label :"(セイ)" %>-->
+<!--     <%= f.text_field :last_name_kana %>-->
+<!--    <%= f.label :"(メイ)" %>-->
+<!--     <%= f.text_field :first_name_kana %>-->
+<!--   </p>-->
+<!--  </div>-->
+
+
+
+<!--  <div class="field">-->
+<!--   <%= f.label :"郵便番号(ハイフンなし)" %>-->
+<!--   <%= f.text_field :postal_code %>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--   <%= f.label :"住所" %>-->
+<!--   <%= f.text_field :address %>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--   <%= f.label :"電話番号" %>-->
+<!--   <%= f.text_field :telephone_number %>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--    <%= f.label :"メールアドレス" %>-->
+<!--    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+<!--  </div>-->
+
+<!--  <div class="field">-->
+<!--  <p>会員ステータス</p>-->
+<!--   <%= f.radio_button :is_deleted, :false %>-->
+<!--   <%= f.label :is_deleted, "有効" , value: :false %>-->
+<!--   <%= f.radio_button :is_deleted, :true %>-->
+<!--   <%= f.label :is_deleted, "退会", value: :true %>-->
+<!--  </div>-->
+
+<!--  <div class="actions">-->
+<!--    <%= f.submit "変更を保存" %>-->
+<!--  </div>-->
+<!--<% end %>-->

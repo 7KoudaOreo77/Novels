@@ -37,22 +37,9 @@
             </td>
            <% end %>
 
-
-           <% if @novel.favorited_by?(current_user) %>
-            <td>
-             <%= link_to public_novel_favorites_path(@novel), method: :delete do %>
-              ♥<%= @novel.favorites.count %> いいね
-             <% end %>
-            </td>
-
-           <% else %>
-            <td>
-             <%= link_to public_novel_favorites_path(@novel), method: :post do %>
-              ♡<%= @novel.favorites.count %> いいね
-             <% end %>
-            </td>
-
-           <% end %>
+         <td id="favorite_link">
+          <%= render 'public/favorites/favorite' %>
+         </td>
 
         </tr>
        </tbody>
