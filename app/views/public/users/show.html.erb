@@ -31,6 +31,9 @@
           <% end %>
          </td>
          <td><%= novel.body %></td>
+         <td>
+          <%= link_to "いいねした投稿",  public_novel_favorites_path(@user) %>
+         </td>
         </tr>
        <% end %>
       </tbody>

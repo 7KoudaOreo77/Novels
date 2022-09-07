@@ -31,9 +31,21 @@ class Public::UsersController < ApplicationController
     end
   end
 
+
+  before_action :set_user, only: [:favorites]
+
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:novel_id)
+    @favorite_novels = Novel.find(favorites)
+  end
+
   private
 
   def public_user_params
    params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
