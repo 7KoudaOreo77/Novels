@@ -1,0 +1,17 @@
+<h1>会員一覧</h1>
+
+<% @users.each do |user| %>
+ <p>会員ID</p><%= user.id %>
+ <p>ニックネーム</p>
+ <%= link_to admin_user_path(user.id) do %>
+  <%= user.name %>
+ <% end %>
+ <p>メールアドレス</p><%= user.email %>
+ <p>ステータス</p>
+  <% if user.is_deleted %>
+   <p>退会</p>
+  <% else %>
+   <p>有効</p>
+  <% end %>
+<% end %>
+<%= paginate @users %>

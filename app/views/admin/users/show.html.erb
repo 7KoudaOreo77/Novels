@@ -1,0 +1,14 @@
+<h1><%= @user.name %>さんの会員詳細</h1>
+
+ <p>会員ID</p><%= @customer.id %>
+ <p>ニックネーム</p><%= @userr.name %>
+ <p>メールアドレス</p><%= @user.email %>
+ <p>会員ステータス</p>
+  <% if @user.is_deleted %>
+   <p>退会</p>
+  <% else %>
+   <p>有効</p>
+  <% end %>
+ <%= link_to "編集する", edit_admin_user_path(@user.id) %>
+<%#= link_to "注文履歴一覧を見る",admin_order_detail_path %>
+

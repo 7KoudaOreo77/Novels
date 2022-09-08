@@ -10,6 +10,11 @@ class Public::TagsController < ApplicationController
     redirect_to public_tags_path
   end
 
+  def show
+   @novel = Novel.find(params[:id])
+   @tags = @novel.tag_counts_on(:tags)
+  end
+
   def edit
     @tag = Tag.find_by(id: params[:id])
   end

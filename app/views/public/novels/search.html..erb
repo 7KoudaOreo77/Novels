@@ -1,0 +1,16 @@
+<h2>投稿一覧</h2>
+
+<%= @tag_list.each do |list| %>
+  <span>
+    <%= link_to list.tag_name, tag_novels_path(novel_tag_id: list.id) %>
+    <%= "(#{list.novels.count})" %>
+  </span>
+</br>
+
+ <span>タグが<%= strong= "#{@t.tag_name}" %>の投稿一覧</span>
+</br>
+<%= @n.each do |n| %>
+ <%= link_to novel.content, n %>
+ </br>
+ <%= link_to 'ホーム', root_path %>
+<% end %>

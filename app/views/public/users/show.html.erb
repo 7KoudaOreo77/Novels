@@ -8,6 +8,7 @@
     <div class="col-md-8 offset-md-1">
      <h2>Books</h2>
      <table class="table table-hover table-inverse">
+      <%= link_to "いいねした投稿",  public_novel_favorites_path(@user) %>
       <thead>
        <tr>
         <th></th>
@@ -32,7 +33,7 @@
          </td>
          <td><%= novel.body %></td>
          <td>
-          <%= link_to "いいねした投稿",  public_novel_favorites_path(@user) %>
+
          </td>
         </tr>
        <% end %>

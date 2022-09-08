@@ -36,7 +36,11 @@
          <% end %>
         </td>
         <td><%= novel.body %></td>
-        <td><i class="fas fa-tag"></i><%= novel.tags.map(&:name).join(', ') %></td>
+        <td><i class="fas fa-tag"></i>
+         <%#= link_to public_novel_tags_path do %>
+          <%= novel.tags.map(&:name).join(', ') %>
+         <%# end %>
+        </td>
         </tr>
 
        <% end %>
