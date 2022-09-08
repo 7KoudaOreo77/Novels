@@ -16,13 +16,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update]
   resources :comments, only: [:index, :create, :destroy]
-  resources :tags, only: [:index, :create, :edit, :update]
+  resources :tags, only: [:index, :create, :edit, :update, :destroyrail]
  end
 
  namespace :public do
   resources :novels, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
    resource :favorites, only: [:create, :destroy]
-   resources :tags, only: [:create, :destroy]
+   resources :tags, only: [:index, :create, :edit, :update, :destroy]
    resources :novel_comments, only: [:create, :destroy]
    collection do
       get 'search'

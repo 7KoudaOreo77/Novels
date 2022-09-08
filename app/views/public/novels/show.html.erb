@@ -30,10 +30,10 @@
            <td><%= @novel.body %></td>
            <% if @user ==current_user %>
             <td>
-             <%= link_to "Edit", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
+             <%= link_to "編集", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
             </td>
             <td>
-             <%= link_to "Destroy", public_novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
+             <%= link_to "削除", public_novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
             </td>
            <% end %>
 

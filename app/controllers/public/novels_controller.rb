@@ -52,7 +52,7 @@ class Public::NovelsController < ApplicationController
   def update
     @novel = Novel.find(params[:id])
     @user = current_user
-    tag_list=params[:post][:name].split(',')
+    tag_list=params[:novel][:tag].split(',')
 
     if @novel.update(novel_params)
       @novel.save_tag(tag_list)
@@ -68,7 +68,7 @@ class Public::NovelsController < ApplicationController
   def destroy
     @novel = Novel.find(params[:id])
     @novel.destroy
-    redirect_to '/novels'
+    redirect_to '/public/novels'
   end
 
   def search
