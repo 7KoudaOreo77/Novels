@@ -13,5 +13,6 @@ class Public::FavoritesController < ApplicationController
       favorite.destroy
     end
 #    redirect_to public_novel_path(novel)
+
   end
 end
