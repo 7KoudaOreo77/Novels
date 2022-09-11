@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @users = User.page(params[:page])
 
@@ -20,6 +22,17 @@ class Admin::UsersController < ApplicationController
     else
       render edit_admin_user_path
     end
+  end
+
+  def withdrawal
+    @customer = current_customer
+  end
+
+  def out
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

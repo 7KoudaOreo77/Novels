@@ -14,7 +14,12 @@ Rails.application.routes.draw do
  namespace :admin do
   get 'admin/homes/top' => 'homes#top'
 
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+   collection do
+      get "withdrawal" => "customers#withdrawal"
+      patch "out" => "customers#out"
+   end
+  end
   resources :comments, only: [:index, :create, :destroy]
   resources :tags, only: [:index, :create, :edit, :update, :destroy]
  end

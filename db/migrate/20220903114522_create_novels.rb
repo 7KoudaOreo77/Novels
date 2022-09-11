@@ -8,7 +8,7 @@ class CreateNovels < ActiveRecord::Migration[6.1]
 
       t.integer :user_id, null: false
 
-      t.integer :tag_id
+      
       t.integer :favorite_id
       t.integer :comment_id
 

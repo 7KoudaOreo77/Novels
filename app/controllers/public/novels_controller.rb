@@ -23,10 +23,12 @@ class Public::NovelsController < ApplicationController
   end
 
   def index
+    #@novels = Novel.where(tag_id: 4)
     @novels = Novel.page(params[:page]).per(10)
     @tag_list=Tag.all
     #@novel = Novel.new
     @user = current_user
+    #@tag = Tag.find_by(params[:tag_id])
   end
 
   def show
@@ -81,14 +83,15 @@ class Public::NovelsController < ApplicationController
   end
 
   def tag_search
+
     @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:novel_id][:tag_id])  #クリックしたタグを取得
+    @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @novels = @tag.novels.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
 
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body, :tag_id)
+    params.require(:novel).permit(:title, :body)
   end
 end

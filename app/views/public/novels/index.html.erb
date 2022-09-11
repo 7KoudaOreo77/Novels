@@ -37,9 +37,17 @@
         </td>
         <td><%= novel.body.truncate(50) %></td>
         <td><i class="fas fa-tag"></i>
-         <%#= link_to public_novel_tag_search_path(@tag) do %>
-          <%= novel.tags.map(&:name).join(', ') %>
-         <%# end %>
+
+        <% novel.tags.each_with_index do |tag,num| %>
+         <% if novel.tags.size - 1 == num %>
+          <%= link_to tag.name,public_novel_tag_search_path(novel_id: novel.id ,tag_id: tag.id) %>
+         <% else %>
+          <%= link_to tag.name,public_novel_tag_search_path(novel_id: novel.id ,tag_id: tag.id) %>,
+         <% end %>
+
+          <%#= novel.tags.map(&:name).join(', ') %>
+
+        <% end %>
         </td>
         </tr>
 

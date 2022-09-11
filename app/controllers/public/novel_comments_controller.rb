@@ -1,6 +1,6 @@
 class Public::NovelCommentsController < ApplicationController
   def create
-    novel = Novel.find(params[:book_id])
+    novel = Novel.find(params[:novel_id])
     comment = current_user.novel_comments.new(public_novel_comment_params)
     comment.novel_id = novel.id
     comment.save
@@ -14,7 +14,7 @@ class Public::NovelCommentsController < ApplicationController
 
   private
 
-  def public_novel_commnet_params
-    params.require(:novel_commnet).permit(:comment)
+  def public_novel_comment_params
+    params.require(:novel_comment).permit(:comment, :novel_id)
   end
 end
