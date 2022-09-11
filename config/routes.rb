@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :novels, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
    resource :favorites, only: [:create, :destroy]
    resources :tags, only: [:index, :create, :edit, :update, :destroy, :show]
+    get 'tag_search'
    resources :novel_comments, only: [:create, :destroy]
    collection do
       get 'search'

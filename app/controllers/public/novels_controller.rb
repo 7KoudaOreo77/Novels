@@ -72,21 +72,23 @@ class Public::NovelsController < ApplicationController
   end
 
   def search
-    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @t = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @n = @tag.novels.all
-
-    if params[:keyword].present?
+   if params[:keyword].present?
       @novels = Novel.where('title LIKE ? or body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
       @keyword = params[:keyword]
-    else
+   else
       @novels = Novel.all
-    end
+   end
+  end
+
+  def tag_search
+    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag = Tag.find(params[:novel_id][:tag_id])  #クリックしたタグを取得
+    @novels = @tag.novels.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
 
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body)
+    params.require(:novel).permit(:title, :body, :tag_id)
   end
 end

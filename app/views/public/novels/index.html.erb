@@ -37,7 +37,7 @@
         </td>
         <td><%= novel.body.truncate(50) %></td>
         <td><i class="fas fa-tag"></i>
-         <%#= link_to public_novel_tags_path do %>
+         <%#= link_to public_novel_tag_search_path(@tag) do %>
           <%= novel.tags.map(&:name).join(', ') %>
          <%# end %>
         </td>

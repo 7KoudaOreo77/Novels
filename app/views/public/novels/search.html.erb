@@ -3,10 +3,11 @@
     <% @novels.each do |novel| %>
       <li>
         <%= link_to public_novel_path(novel.id) do %>
-         <%= novel.title %><br>
+         <%= novel.title %>
+        <% end %><br>
          <%= novel.keyword_part(@keyword) %>
 
-        <% end %>
+
       </li>
     <% end %>
   </ul>
