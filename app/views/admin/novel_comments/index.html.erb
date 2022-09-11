@@ -1,0 +1,11 @@
+<h1>コメント一覧</h1>
+
+<% @comments.each do |c| %>
+ <%= c.comment %>
+ <%= c.user.name %>
+
+ <%= link_to "Destroy", admin_novel_comment_path(c.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
+ </br>
+<% end %>
+
+<%= paginate @comments %>

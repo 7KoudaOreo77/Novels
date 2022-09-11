@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   get 'admin/homes/top' => 'homes#top'
 
   resources :users, only: [:index, :show, :edit, :update] do
-   collection do
-      get "withdrawal" => "customers#withdrawal"
-      patch "out" => "customers#out"
+   member do
+    get "withdrawal" => "users#withdrawal"
+    patch "out" => "users#out"
    end
   end
-  resources :comments, only: [:index, :create, :destroy]
+  resources :novel_comments, only: [:index, :create, :destroy]
   resources :tags, only: [:index, :create, :edit, :update, :destroy]
  end
 

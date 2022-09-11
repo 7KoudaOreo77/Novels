@@ -1,4 +1,12 @@
 class Admin::NovelCommentsController < ApplicationController
+
+  def index
+   @comments = NovelComment.all
+   @comments = @comments.page(params[:page]).per(5)
+   #@user = User.find(admin_novel_commnet_params)
+   #@user =
+  end
+
   def create
     novel = Novel.find(params[:book_id])
     comment = current_user.novel_comments.new(admin_novel_comment_params)
@@ -9,7 +17,7 @@ class Admin::NovelCommentsController < ApplicationController
 
   def destroy
    NovelComment.find(params[:id]).destroy
-   redirect_to admin_novel_path(params[:novel_id])
+   redirect_to admin_novel_comments_path
   end
 
   private

@@ -1,6 +1,6 @@
 <h1><%= @user.name %>さんの会員情報編集</h1>
 
-<%= form_with model: @user, url: admin_customer_path(@user), method: :patch do |f| %>
+<%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
 
  <p>会員ID</p><%= @user.id %>
 
@@ -29,4 +29,4 @@
   </div>
 <% end %>
 
-<%= link_to"退会する", withdrawal_admin_users_path %>
+<%= link_to"利用停止にする", withdrawal_admin_user_path(@user.id) %>

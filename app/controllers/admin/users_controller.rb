@@ -25,12 +25,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def withdrawal
-    @customer = current_customer
+    @user = User.find(params[:id])
   end
 
   def out
-    @customer = current_customer
-    @customer.update(is_deleted: true)
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
