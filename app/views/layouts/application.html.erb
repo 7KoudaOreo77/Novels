@@ -21,16 +21,18 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav ml-auto">
 
-       <%= form_with url: search_public_novels_path, local: true, method: :get do |form| %>
-        <%= form.text_field :keyword %>
-        <%= form.submit "検索" %>
-       <% end %>
+
 
 
         <% if user_signed_in? %>
+         <%= form_with url: search_public_novels_path, local: true, method: :get do |form| %>
+          <%= form.text_field :keyword %>
+          <%= form.submit "検索" %>
+         <% end %>
+
          <li>
           <%= link_to public_user_path(current_user.id), class:"nav-link text-light" do %>
-            <i class="fas fa-home"></i> Home
+            <i class="fas fa-home"></i> マイページ
           <% end %>
          </li>
          <li>
@@ -40,12 +42,12 @@
          </li>
          <li>
           <%= link_to public_users_path, class:"nav-link text-light" do %>
-           <i class="fas fa-users"></i> Users
+           <i class="fas fa-users"></i> ユーザー
           <% end %>
          </li>
          <li>
           <%= link_to public_novels_path, class:"nav-link text-light" do %>
-           <i class="fas fa-book-open"></i> Books
+           <i class="fas fa-book-open"></i> 投稿一覧
           <% end %>
          </li>
          <li>
@@ -83,12 +85,17 @@
          </li>
          <li>
           <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
-           <i class="fas fa-user-plus"></i> Sign up
+           <i class="fas fa-user-plus"></i> 新規登録
+          <% end %>
+         </li>
+         <li>
+          <%= link_to users_guest_sign_in_path, method: :post, class:"nav-link text-light" do %>
+           <i class="fas fa-sign-in-alt"></i> ゲストログイン(閲覧用)
           <% end %>
          </li>
          <li>
           <%= link_to new_user_session_path, class:"nav-link text-light" do %>
-           <i class="fas fa-sign-in-alt"></i> Log in
+           <i class="fas fa-sign-in-alt"></i> ログイン
           <% end %>
          </li>
          <% end %>

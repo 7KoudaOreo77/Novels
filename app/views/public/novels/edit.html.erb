@@ -11,7 +11,7 @@
   <div class="container">
    <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-     <h1>Editing Book</h1>
+     <h1>投稿編集</h1>
     	<%= form_with model: @novel, url: public_novel_path, method: :patch do |f| %>
     	 <div class="form-group">
         <h6>Title</h6>
@@ -31,7 +31,7 @@
        </div>
       <% end %>
   		<%=link_to"Show", public_novel_path, class:"book_id" %> |
-  		<%=link_to"Back", public_novels_path, class:"back" %>
+  		<%=link_to"戻る", public_novels_path, class:"back" %>
     </div>
    </div>
   </div>
