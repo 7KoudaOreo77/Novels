@@ -16,17 +16,19 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-  <p>会員ステータス</p>
-   <%= f.radio_button :is_deleted, :false %>
-   <%= f.label :is_deleted, "有効" , value: :false %>
-   <%= f.radio_button :is_deleted, :true %>
-   <%= f.label :is_deleted, "退会", value: :true %>
-  </div>
+  <!--<div class="field">-->
+  <!--<p>会員ステータス</p>-->
+  <!-- <%= f.radio_button :is_deleted, :false %>-->
+  <!-- <%= f.label :is_deleted, "有効" , value: :false %>-->
+  <!-- <%= f.radio_button :is_deleted, :true %>-->
+  <!-- <%= f.label :is_deleted, "退会", value: :true %>-->
+  <!--</div>-->
 
   <div class="actions">
     <%= f.submit "変更を保存" %>
   </div>
 <% end %>
 
-<%= link_to"利用停止にする", withdrawal_admin_user_path(@user.id) %>
+<% if @user.is_deleted == false %>
+ <%= link_to"利用停止にする", withdrawal_admin_user_path(@user.id) %>
+<% end %>

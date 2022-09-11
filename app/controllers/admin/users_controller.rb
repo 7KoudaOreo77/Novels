@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to admin_users_path
   end
 
   private
