@@ -27,7 +27,7 @@
              <%= @novel.title %>
             <% end %>
            </td>
-           <td><%= @novel.body.truncate(50) %></td>
+
            <% if @user ==current_user %>
             <td>
              <%= link_to "編集", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
@@ -41,9 +41,12 @@
           <%= render 'public/favorites/favorite' %>
          </td>
 
+
         </tr>
        </tbody>
       </table>
+
+      <%= @novel.body %>
 
       <div>
        <p>コメント件数：<%= @novel.novel_comments.count %></p>

@@ -22,9 +22,11 @@
        <% @novels.each do |novel| %>
         <tr>
          <td>
-          <%= link_to public_user_path(@user.id) do %>
-           <%= image_tag novel.user.get_profile_image(100,100) %>
-          <% end %>
+          <% if novel.image.attached? %>
+            <%= image_tag novel.get_novel_image(100,120) %>
+           <% else %>
+            <%= image_tag '瓶はね', size: "100x120" %>
+           <% end %>
          </td>
          <td>
           <%= link_to public_novel_path(novel.id), class:"novel_id" do %>
