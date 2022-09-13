@@ -92,6 +92,6 @@ class Public::NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :body)
+    params.require(:novel).permit(:title, :body, :image)
   end
 end

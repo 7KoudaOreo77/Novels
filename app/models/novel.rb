@@ -17,12 +17,12 @@ class Novel < ApplicationRecord
     end
   end
 
-  def get_image
-    unless novel.attached?
+  def get_novel_image(width, height)
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       novel.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      novel
+      image.variant(resize_to_limit: [width, height]).processed
   end
 
   def favorited_by?(user)
