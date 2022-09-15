@@ -33,7 +33,7 @@
            <%= novel.title %>
           <% end %>
          </td>
-         <td><%= novel.bodies.first&.truncate(50) %></td>
+         <td><%= novel.bodies.first&.body&.truncate(50) %></td>
          <td>
 
          </td>
