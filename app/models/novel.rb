@@ -6,8 +6,10 @@ class Novel < ApplicationRecord
   has_many :tags,through: :novel_tags
   has_many :favorites,dependent: :destroy
 
+  has_many :bodies, dependent: :destroy, class_name: "NovelBody"
+
   validates :title, presence: true
-  validates :body, presence: true, length: { maximum: 30000 }
+
 
   def get_image
     if novel.attached?
@@ -54,7 +56,7 @@ class Novel < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(name: old)
+      self.tags.find_by(name: old).destroy!
     end
 
     # 新しいタグを保存
@@ -63,5 +65,7 @@ class Novel < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+
 
 end

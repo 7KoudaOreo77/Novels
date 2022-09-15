@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_05_092541) do
+ActiveRecord::Schema.define(version: 2022_09_15_103011) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2022_09_05_092541) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "novel_bodies", force: :cascade do |t|
+    t.text "body"
+    t.integer "novel_id", null: false
+    t.string "subtitle"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["novel_id"], name: "index_novel_bodies_on_novel_id"
+  end
+
   create_table "novel_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -85,7 +94,6 @@ ActiveRecord::Schema.define(version: 2022_09_05_092541) do
 
   create_table "novels", force: :cascade do |t|
     t.string "title", null: false
-    t.text "body", null: false
     t.text "caption"
     t.integer "user_id", null: false
     t.integer "favorite_id"
@@ -117,6 +125,7 @@ ActiveRecord::Schema.define(version: 2022_09_05_092541) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "novel_bodies", "novels"
   add_foreign_key "novel_tags", "novels"
   add_foreign_key "novel_tags", "tags"
 end

@@ -46,7 +46,15 @@
        </tbody>
       </table>
 
-      <%= @novel.body %>
+      <% @novel.bodies.each do |novel_body| %>
+      <div>
+
+       <%= link_to novel_body.subtitle %>
+      </div>
+
+      <% end%>
+
+
 
       <div>
        <p>コメント件数：<%= @novel.novel_comments.count %></p>

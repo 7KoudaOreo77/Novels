@@ -40,7 +40,7 @@
           <%= novel.title %>
          <% end %>
         </td>
-        <td><%= novel.body.truncate(50) %></td>
+        <td><%= novel.bodies.first&.truncate(50) %></td>
         <td><i class="fas fa-tag"></i>
 
         <% novel.tags.each_with_index do |tag,num| %>

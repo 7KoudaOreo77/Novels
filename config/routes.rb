@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  namespace :public do
+    get 'bodies/new'
+    get 'bodies/show'
+    get 'bodies/edit'
+  end
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -37,6 +43,7 @@ Rails.application.routes.draw do
       collection do
         get 'search'
       end
+      resources :bodies, only: [:new, :show, :create, :edit, :update, :destroy]
     end
     resources :users, only: [:index, :show, :edit, :update] do
       member do
