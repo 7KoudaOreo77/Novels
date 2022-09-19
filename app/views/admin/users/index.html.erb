@@ -1,17 +1,32 @@
 <h1>会員一覧</h1>
 
-<% @users.each do |user| %>
- <p>会員ID</p><%= user.id %>
- <p>ニックネーム</p>
- <%= link_to admin_user_path(user.id) do %>
-  <%= user.name %>
- <% end %>
- <p>メールアドレス</p><%= user.email %>
- <p>ステータス</p>
-  <% if user.is_deleted %>
-   <p>利用停止</p>
-  <% else %>
-   <p>有効</p>
+ <table class="table", class="bg-secondary">
+  <thead class="text-center">
+   <th>会員ID</th>
+   <th>ニックネーム</th>
+   <th>メールアドレス</th>
+   <th>ステータス</th>
+  </thead>
+  <tbody class="text-center">
+  <% @users.each do |user| %>
+   <tr>
+    <td><%= user.id %></td>
+    <td>
+     <%= link_to admin_user_path(user.id) do %>
+      <%= user.name %>
+     <% end %>
+    </td>
+    <td><%= user.email %></td>
+    <td>
+     <% if user.is_deleted %>
+      <p>利用停止</p>
+     <% else %>
+      <p>有効</p>
+     <% end %>
+    </td>
+   </tr>
   <% end %>
-<% end %>
+  </tbody>
+ </table>
+
 <%= paginate @users %>
