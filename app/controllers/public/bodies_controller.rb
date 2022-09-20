@@ -1,11 +1,12 @@
 class Public::BodiesController < ApplicationController
-  before_action :set_novel, only: [:new, :edit, :create, :update, :destroy, :show]
+  before_action :set_novel, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_novel_body, only: [:new, :create, :update]
 
   def new
   end
 
   def show
+    @novel = Novel.find(params[:novel_id])
     @novel_body = NovelBody.find(params[:id])
     @current_page = (params[:page] || 1).to_i
     @body_text, @max_page = @novel_body.page(@current_page)
