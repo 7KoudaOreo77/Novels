@@ -1,11 +1,20 @@
 <h1>コメント一覧</h1>
 
-<% @comments.each do |c| %>
- <%= c.comment %>
- <%= c.user.name %>
-
- <%= link_to "削除", admin_novel_comment_path(c.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
- </br>
-<% end %>
+ <table class="table", class="bg-secondary">
+  <thead class="text-center">
+   <th>コメント</th>
+   <th>ユーザー</th>
+  </thead>
+  <tbody class="text-center">
+  <% @comments.each do |c| %>
+   <tr>
+    <td><%= c.comment %></td>
+    <td><%= c.user.name %></td>
+    <td><%= link_to "削除", admin_novel_comment_path(c.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
+    </td>
+   </tr>
+  <% end %>
+  </tbody>
+ </table>
 
 <%= paginate @comments %>
