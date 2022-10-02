@@ -1,6 +1,7 @@
 class Public::NovelsController < ApplicationController
   def new
     @novel = Novel.new
+    @novel.bodies.build
   end
 
   def create
@@ -92,6 +93,6 @@ class Public::NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel).permit(:title, :image)
+    params.require(:novel).permit(:title, :image, bodies_attributes:[:subtitle, :body])
   end
 end

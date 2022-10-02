@@ -52,6 +52,7 @@
        <%= link_to novel_body.subtitle, public_novel_body_path(@novel,novel_body) %>
        <% if current_user == @novel.user %>
         <%= link_to "編集", edit_public_novel_body_path(@novel,novel_body), class:"btn btn-success" %>
+        <%= link_to "削除", public_novel_body_path(@novel,novel_body), method: :delete, "data-confirm" => "本当に消しますか？" %>
        <% end %>
       </div>
 

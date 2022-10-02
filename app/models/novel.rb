@@ -7,6 +7,7 @@ class Novel < ApplicationRecord
   has_many :favorites,dependent: :destroy
 
   has_many :bodies, dependent: :destroy, class_name: "NovelBody"
+  accepts_nested_attributes_for :bodies
 
   validates :title, presence: true
 

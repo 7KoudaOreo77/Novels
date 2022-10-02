@@ -36,8 +36,12 @@ class Public::BodiesController < ApplicationController
   end
 
   def destroy
-    @novel.destroy
-    redirect_to
+    @novel_body = NovelBody.find(params[:id])
+    if @novel_body.destroy
+     redirect_to public_novel_path(@novel)
+    else
+      render :index
+    end
   end
 
   private
