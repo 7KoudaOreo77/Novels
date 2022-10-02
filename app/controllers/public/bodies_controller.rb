@@ -36,7 +36,8 @@ class Public::BodiesController < ApplicationController
   end
 
   def destroy
-    # 実装する
+    @novel.destroy
+    redirect_to
   end
 
   private

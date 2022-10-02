@@ -25,6 +25,18 @@
    <%= f.label"タグ (,で区切ると複数タグ登録できます)" %>
    <%= f.text_field :tag%>
   </div>
+
+  <div class="form-group">
+    <h6>サブタイトル</h6>
+      <%= f.text_field :subtitle %>
+  </div>
+
+  <div class="form-group">
+    <h6>本文</h6>
+      <%= f.text_area :body %>
+  </div>
+
+
   <div class="form-group">
    <%= f.submit "Create Book", class:"btn btn-sm btn-success" %>
   </div>
