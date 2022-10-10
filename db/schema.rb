@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_15_103011) do
+ActiveRecord::Schema.define(version: 2022_10_10_122455) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,15 +60,11 @@ ActiveRecord::Schema.define(version: 2022_09_15_103011) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "novel_bodies", force: :cascade do |t|
     t.text "body"
     t.integer "novel_id", null: false
     t.string "subtitle"
+    t.integer "position", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["novel_id"], name: "index_novel_bodies_on_novel_id"
@@ -96,10 +92,20 @@ ActiveRecord::Schema.define(version: 2022_09_15_103011) do
     t.string "title", null: false
     t.text "caption"
     t.integer "user_id", null: false
-    t.integer "favorite_id"
-    t.integer "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: true
+  end
+
+  create_table "slice_pages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "novel_id", null: false
+    t.text "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["novel_id"], name: "index_slice_pages_on_novel_id"
+    t.index ["user_id", "novel_id"], name: "index_slice_pages_on_user_id_and_novel_id", unique: true
+    t.index ["user_id"], name: "index_slice_pages_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -128,4 +134,6 @@ ActiveRecord::Schema.define(version: 2022_09_15_103011) do
   add_foreign_key "novel_bodies", "novels"
   add_foreign_key "novel_tags", "novels"
   add_foreign_key "novel_tags", "tags"
+  add_foreign_key "slice_pages", "novels"
+  add_foreign_key "slice_pages", "users"
 end

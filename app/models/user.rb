@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :novels, dependent: :destroy
   has_many :novel_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :slice_pages, dependent: :destroy
+  has_many :slice_novels, through: :slice_pages, source: :novel
 
   has_one_attached :profile_image
 

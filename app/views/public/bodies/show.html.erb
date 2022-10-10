@@ -10,4 +10,7 @@
  <%= link_to "次へ", public_novel_body_path(@novel,@novel_body, page: @current_page + 1) %>
 <% end %>
 
+<%= request.url %>
+
+<%= render 'public/slice_pages/buttons', novel: @novel %>
 

@@ -43,8 +43,16 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update] do
       member do
         get :favorites
+        get :slice_pages
       end
     end
-  end
 
+    resources :bodies do
+      member do
+        get :move_higher
+        get :move_lower
+      end
+    end
+    resources :slice_pages, only: [:create, :update, :destroy]
+  end
 end

@@ -1,6 +1,6 @@
 class Public::BodiesController < ApplicationController
   before_action :set_novel, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_novel_body, only: [:new, :create, :update]
+  before_action :set_novel_body, only: [:new, :create]
 
   def new
   end
@@ -26,13 +26,15 @@ class Public::BodiesController < ApplicationController
   end
 
   def update
-    @novel_body.assign_attributes(body_params)
-    if @novel_body.save
-      redirect_to public_novel_body_path(@novel,@novel_body)
+    @novel_body = NovelBody.find(params[:id])
+    @novel = @novel_body.novel
+    if @novel_body.update(body_params)
+      flash[:notice] = "編集しました。"
+      redirect_to public_novel_body_path(@novel, @novel_body)
     else
+      flash[:danger] = "編集に失敗しました。"
       render :edit
     end
-
   end
 
   def destroy
@@ -42,6 +44,16 @@ class Public::BodiesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def move_higher
+    NovelBody.find(params[:id]).move_higher #move_higherメソッドでpositionを上に
+    redirect_back(fallback_location: root_url)
+  end
+
+  def move_lower
+    NovelBody.find(params[:id]).move_lower #move_lowerメソッドでpositionを下に
+    redirect_back(fallback_location: root_url)
   end
 
   private

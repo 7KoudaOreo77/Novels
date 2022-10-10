@@ -40,6 +40,11 @@ class Public::UsersController < ApplicationController
     @favorite_novels = Novel.find(favorites)
   end
 
+  def slice_pages
+    @user = User.find(params[:id])
+    @novels = @user.slice_novels
+  end
+
   private
 
   def public_user_params

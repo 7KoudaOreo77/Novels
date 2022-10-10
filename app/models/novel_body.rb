@@ -1,4 +1,5 @@
 class NovelBody < ApplicationRecord
+  acts_as_list
   belongs_to :novel
 
   validates :body, presence: true, length: { maximum: 30000 }

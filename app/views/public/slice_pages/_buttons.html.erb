@@ -1,0 +1,9 @@
+<% slice_page = current_user&.slice_pages&.find_by(novel_id: novel.id) %>
+<% if slice_page && slice_page.url != request.url %>
+  <%= link_to "しおりを挟む", public_slice_page_path(slice_page, url: request.url), method: :patch %>
+<% elsif slice_page %>
+  <%= link_to "しおりを削除", public_slice_page_path(slice_page), method: :delete %>
+<% else %>
+  <%= link_to "しおりを挟む", public_slice_pages_path(url: request.url, novel_id: novel.id), method: :post %>
+<% end %>
+

@@ -4,6 +4,7 @@ class CreateNovelBodies < ActiveRecord::Migration[6.1]
       t.text :body
       t.references :novel, null: false, foreign_key: true
       t.string :subtitle
+      t.integer :position, null: false
 
       t.timestamps
     end

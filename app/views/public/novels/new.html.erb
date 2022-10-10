@@ -10,7 +10,14 @@
 </h3>
 
  <h2 class="mt-3">新規投稿</h2>
+
   <%= form_with model: @novel, url: public_novels_path, method: :post do |f| %>
+
+   <%= f.radio_button :is_deleted, :true %>
+   <%= f.label :is_deleted, "シリーズ作品" , value: :true %>
+   <%= f.radio_button :is_deleted, :false %>
+   <%= f.label :is_deleted, "読み切り作品", value: :false %>
+
   <div class="form-group">
    <label for="inputImage">表紙</label><br>
     <%= f.file_field :image, placeholder: "表紙画像", accept: "image/*" %>
@@ -34,7 +41,7 @@
 
   <div class="form-group">
     <h6>本文</h6>
-      <%= t.text_area :body, size: "100x80" %>
+      <%= t.text_area :body, size: "100x20" %>
   </div>
  <% end %>
 
