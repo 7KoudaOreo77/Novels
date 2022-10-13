@@ -1,5 +1,5 @@
 <% if @user.errors.any? %>
- <h4>User info</h4>
+ <h4>ユーザー情報の編集</h4>
  <%= @user.errors.count %>error prohibited this obj from being saved:
  <ul>
   <% @user.errors.full_messages.each do |message| %>
@@ -12,22 +12,22 @@
   <div class="container">
    <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-     <h2>User info</h2>
+     <h2>ユーザー情報の編集</h2>
      <%= form_with model: @user, url: public_user_path, method: :patch do |f| %>
       <div class="form-group">
-       <label for="inputName">Name</label><br>
+       <label for="inputName">ユーザー名</label><br>
        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
       </div>
       <div class="form-group">
-       <label for="inputImage">Image</label><br>
+       <label for="inputImage">ユーザー画像</label><br>
        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
       </div>
       <div class="form-group">
-       <label for="inputIntroduction">Introduction</label><br>
-       <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
+       <label for="inputIntroduction">自己紹介</label><br>
+       <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", size: "53x10" %>
       </div>
       <div class="form-group">
-       <%= f.submit "Update User", class:"tn btn-secondary" %>
+       <%= f.submit "変更を保存", class:"tn btn-secondary btn-block" %>
       </div>
      <% end %>
     </div>

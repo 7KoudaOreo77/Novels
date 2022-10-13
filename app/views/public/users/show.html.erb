@@ -6,14 +6,16 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
-     <h2>Books</h2>
+     <h2 class="font-weight-bold">マイページ</h2>
      <table class="table table-hover table-inverse">
-      <%= link_to "いいねした投稿",  favorites_public_user_path(current_user) %>
+      <%= link_to "いいね一覧",  favorites_public_user_path(current_user) %>
+      <!--<%= link_to "しおり一覧",  favorites_public_user_path(current_user) %>-->
+      
       <thead>
        <tr>
         <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
+        <th>タイトル</th>
+        <th>本文</th>
         <th colspan="3"></th>
        </tr>
       </thead>
@@ -33,6 +35,8 @@
            <%= novel.title %>
           <% end %>
          </td>
+         <!--できたらキャプションにしたい-->
+         <!--<td><%= novel.caption.first&.truncate(50) %></td>-->
          <td><%= novel.bodies.first&.body&.truncate(50) %></td>
          <td>
 
