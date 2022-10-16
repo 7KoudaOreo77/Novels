@@ -1,9 +1,53 @@
 <% slice_page = current_user&.slice_pages&.find_by(novel_id: novel.id) %>
 <% if slice_page && slice_page.url != request.url %>
-  <%= link_to "しおりを挟む", public_slice_page_path(slice_page, url: request.url), method: :patch %>
+<div class="icons color-green">
+  <i class="fa fa-bookmark"></i><%= link_to "しおりを挟む", public_slice_page_path(slice_page, url: request.url), method: :patch %>
+</div>
 <% elsif slice_page %>
-  <%= link_to "しおりを削除", public_slice_page_path(slice_page), method: :delete %>
+<div class="icons color-green">
+  <i class="fa fa-bookmark"></i><%= link_to "しおりを削除", public_slice_page_path(slice_page), method: :delete %>
+</div>
 <% else %>
-  <%= link_to "しおりを挟む", public_slice_pages_path(url: request.url, novel_id: novel.id), method: :post %>
+<div class="icons color-green">
+  <i class="fa fa-bookmark"></i><%= link_to "しおりを挟む", public_slice_pages_path(url: request.url, novel_id: novel.id), method: :post %>
+</div>
 <% end %>
 
+<div class="class"></div>
+<div id="id"></div>
+<span class="class"></span>
+<p class="class"></p>
+
+<ul>
+  <li><a hre="#"></a></li>
+  <li><a hre="#"></a></li>
+  <li><a hre="#"></a></li>
+  <li><a hre="#"></a></li>
+</ul>
+
+<p>comment</p>
+<p>comment</p>
+<p>comment</p>
+
+<p>comment1</p>
+<p>comment2</p>
+<p>comment3</p>
+<p>comment4</p>
+
+<p class="class_1"></p>
+<p class="class_2"></p>
+<p class="class_3"></p>
+<p class="class_4"></p>
+
+assets/images/photo_1.jpg
+              photo_2.jpg
+              ...
+              photo_25.jpg
+
+<img src="assets/images/photo_1"></img>
+<img src="assets/images/photo_2"></img>
+
+<a href="#" target="_blank"></a>
+<a href="#" target="_blank"></a>
+<a href="#" target="_blank"></a>
+<a href="#" target="_blank"></a>

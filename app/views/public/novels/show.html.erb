@@ -2,12 +2,12 @@
   <div class="row">
    <div class="col-md-3">
     <%= render 'public/users/info', user: @user %>
-    <%= render 'list', novel: @novel_new %>
+
     </div>
 
 
     <div class="col-md-8 offset-md-1">
-  	 <h2>Book detail</h2>
+  	 <h2>投稿詳細</h2>
   		<table class="table">
     	  <tbody>
     	    <tr>
@@ -59,26 +59,26 @@
         <%= link_to "削除", public_novel_body_path(@novel,novel_body), method: :delete, "data-confirm" => "本当に消しますか？" %>
        <% end %>
       </div>
-
-      <% end%>
-
+      <% end %>
 
 
+      <div class>コメント</div>
+      <div>
+       <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel) do |f| %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", size: "50x2" %>
+        <%= f.submit "送信" %>
+       <% end %>
+      </div>
       <div>
        <p>コメント件数：<%= @novel.novel_comments.count %></p>
        <% @novel.novel_comments.each do |novel_comment| %>
-        <p><%= image_tag novel_comment.user.get_profile_image(100,100) %></p>
-        <%= novel_comment.user.name %>
-        <%= novel_comment.created_at.strftime('%Y/%m/%d') %><%= novel_comment.comment %>
+        <span><%= image_tag novel_comment.user.get_profile_image(100,100) %></span>
+        <span><%= novel_comment.user.name %></span>
+        <span><%= novel_comment.created_at.strftime('%Y/%m/%d') %><%= novel_comment.comment %>
+        </span>
        <% end %>
-      </div>
-      <div>
-       <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel) do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-        <%= f.submit "送信する" %>
-       <% end %>
-      </div>
 
 
+      </div>
     </div>
   </div>

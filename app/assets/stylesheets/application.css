@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.icons.color-green i, .icons svg {
+  color: #1da1f2; /*青色にする*/
+}
+
+.icons.color-pink i, .icons svg {
+  color: #1da1f2; /*青色にする*/
+}

@@ -66,3 +66,5 @@ gem 'image_processing', '~> 1.2'
 gem "net-smtp"
 
 gem 'acts_as_list'
+
+gem 'faker'
