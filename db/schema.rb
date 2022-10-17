@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_122455) do
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["novel_id", "tag_id"], name: "index_novel_tags_on_novel_id_and_tag_id", unique: true
+    t.index ["novel_id", "tag_id"], name: "index_novel_tags_on_novel_id_and_tag_id"
     t.index ["novel_id"], name: "index_novel_tags_on_novel_id"
     t.index ["tag_id"], name: "index_novel_tags_on_tag_id"
   end

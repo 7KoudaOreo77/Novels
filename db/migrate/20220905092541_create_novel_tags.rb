@@ -7,6 +7,6 @@ class CreateNovelTags < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :novel_tags, [:novel_id, :tag_id], unique: true
+    add_index :novel_tags, [:novel_id, :tag_id]
   end
 end
