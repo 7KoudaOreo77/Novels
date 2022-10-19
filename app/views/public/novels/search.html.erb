@@ -5,8 +5,7 @@
         <%= link_to public_novel_path(novel.id) do %>
          <%= novel.title %>
         <% end %><br>
-         <%= novel.keyword_part(@keyword) %>
-
+         <%= novel.keyword_part(@keyword, novel.bodies.pluck(:body).join)  %>
 
       </li>
     <% end %>

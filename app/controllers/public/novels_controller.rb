@@ -76,7 +76,9 @@ class Public::NovelsController < ApplicationController
 
   def search
    if params[:keyword].present?
-      @novels = Novel.where('title LIKE ? or body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      #@novels = Novel.where('title LIKE ? or body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @novels = Novel.joins(:bodies).where('title LIKE ? or novel_bodies.body LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+     @keyword = params[:keyword]
       @keyword = params[:keyword]
    else
       @novels = Novel.all

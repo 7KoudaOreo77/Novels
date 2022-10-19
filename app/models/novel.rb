@@ -32,19 +32,18 @@ class Novel < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def keyword_part(keyword)
-    l =keyword.length+100
-    if body.length > l
-      i = body.index(keyword)
+  def keyword_part(keyword, text)
+    l = keyword.length + 100
+    if text.length > l && text.include?(keyword)
+      i = text.index(keyword)
       if i > 50
-        body.slice(i-50, l)
+        text.slice(i-50, l)
       else
-        body.slice(0,100)
+        text.slice(0,100)
       end
     else
-      body
+      text.truncate(100)
     end
-
   end
 
   def save_tag(sent_tags)

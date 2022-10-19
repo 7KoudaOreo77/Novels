@@ -12,4 +12,5 @@ class NovelBody < ApplicationRecord
       pages.size              #=> @max_page
     ]
   end
+
 end
