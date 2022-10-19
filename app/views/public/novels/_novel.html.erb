@@ -1,11 +1,32 @@
-<%#= link_to image_tag( post.image.variant(resize: '100x100') ), post_path(post.id) %>
-<%= link_to novel.user.name, public_user_path(novel.user.id) %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= novel.favorites.length %>
-<%= link_to novel.title, public_novel_path(novel.id) %></br>
-<%= novel.caption.truncate(20) %></br>
 
-<% slice_page = current_user&.slice_pages.find_by(novel_id: novel.id) %>
-<% if slice_page %>
-  <%= link_to "しおりのページ", slice_page.url %>
-<% end %></br>
+
+      <tbody>
+       <tr>
+        <td>
+　　　  　<%= link_to novel.user.name, public_user_path(novel.user.id) %>
+        </td>
+        <td>
+        <i class="fa fa-heart unlike-btn"></i>
+        <%= novel.favorites.length %>
+        </td>
+        <td>
+        <%= link_to novel.title, public_novel_path(novel.id) %>
+
+        </td>
+        <td><%= novel.caption.truncate(20) %></td>
+        <td>
+          <% slice_page = current_user&.slice_pages.find_by(novel_id: novel.id) %>
+          <% if slice_page %>
+            <%= link_to "しおりのページ", slice_page.url %>
+          <% end %>
+        </td>
+        </tr>
+
+
+       </tbody>
+
+
+
+<%#= link_to image_tag( post.image.variant(resize: '100x100') ), post_path(post.id) %>
+
+

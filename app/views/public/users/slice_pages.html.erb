@@ -1,3 +1,23 @@
-<p>しおり一覧</p>
-<%= render partial: "public/novels/novel", collection: @novels %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h2>しおり一覧</h2>
+      <table class="table table-hover table-inverse">
+       <thead>
+        <tr>
+         <th>ユーザー名</th>
+         <th>いいね数</th>
+         <th>タイトル</th>
+         <th>キャプション</th>
+         <th>しおり</th>
+        </tr>
+       </thead>
+       <%= render partial: "public/novels/novel", collection: @novels %>
+      </table>
+
+      <%#= paginate @novels %>
+    </div>
+  </div>
+</div>
+
 
