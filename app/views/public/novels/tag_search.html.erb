@@ -1,17 +1,40 @@
-<h2>タグ一覧</h2>
+   <div class="col-md-8 offset-md-1">
+    <h2>タグ一覧</h2>
+    <table class="table table-hover table-inverse">
+      <% @tag_list.each do |list| %>
+      <span>
+        <%= list.name %>
+        <%= "(#{list.novels.count})" %>
+      </span>
+      <% end %></br>
 
-<% @tag_list.each do |list| %>
-  <span>
-    <%= list.name %>
-    <%= "(#{list.novels.count})" %>
-  </span>
-<% end %>
-</br>
+      <h4 class="mt-4">タグが<%= strong= "#{@tag.name}" %>の投稿一覧</h4>
+      </br>
+        <thead>
+        <tr>
+         <th>タイトル</th>
+         <th>本文</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @novels.each do |n| %>
+        <tr>
+          <td>
+            <%= link_to n.title, public_novel_path(n) %>
+          </td>
+          <td>
+            <%= n.bodies.first&.body&.truncate(50) %></br>
+          </td>
+        </tr>
+        <% end %>
+       </tbody>
+      </table>
+    <%#= paginate @novels %>
+  </div>
 
- <span>タグが<%= strong= "#{@tag.name}" %>の投稿一覧</span>
-</br>
-<% @novels.each do |n| %>
- <%= link_to n.title, public_novel_path(n) %>
- </br>
- <%= link_to 'ホーム', root_path %>
-<% end %>
+
+
+
+
+
+
