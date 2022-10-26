@@ -31,7 +31,7 @@ novel_user_id_group = Novel.group('user_id').count
 # novel_body create
 Novel.count.times do |n|
   # novel.user.novels.length => max novel count
-  novel = Novel.offset(n - 1).limit(1).first
+  novel = Novel.offset(n).limit(1).first
   NovelBody.create!(novel_id: novel.id, subtitle: "#{rand(1..5)}章", body: Faker::Lorem.paragraph_by_chars(number: rand(200..256), supplemental: false), position: 3)
 end
 
