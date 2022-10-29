@@ -13,7 +13,7 @@
         <%= link_to novel.title, public_novel_path(novel.id) %>
 
         </td>
-        <td><%= novel.caption.truncate(20) %></td>
+
         <td>
           <% slice_page = current_user&.slice_pages.find_by(novel_id: novel.id) %>
           <% if slice_page %>
