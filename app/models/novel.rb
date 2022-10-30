@@ -10,6 +10,7 @@ class Novel < ApplicationRecord
   accepts_nested_attributes_for :bodies
 
   validates :title, presence: true
+  validates_associated :tags
 
 
   def get_image

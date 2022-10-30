@@ -17,8 +17,7 @@ class Public::NovelsController < ApplicationController
       flash[:hoge] = "Novel was successfully created."
       redirect_to public_novel_path(@novel.id)
     else
-      @novels = Novel.all
-      render :index
+      render :new
     end
 
   end
