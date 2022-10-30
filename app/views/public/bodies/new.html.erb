@@ -9,23 +9,28 @@
 <% end %>
 </h3>
 
+<div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
  <h2 class="mt-3">新規投稿</h2>
   <%= form_with model: @novel_body, url: public_novel_bodies_path(params[:novel_id]), method: :post do |f| %>
   <div class="form-group">
 
 
   <div class="form-group">
-    <h6>サブタイトル</h6>
-      <%= f.text_field :subtitle %>
+    <h6>サブタイトル（章など）</h6>
+      <%= f.text_field :subtitle, size: "100x20" %>
   </div>
 
   <div class="form-group">
     <h6>本文（[page]でページ追加）</h6>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, size: "100x20" %>
   </div>
 
+  <div class="my-4 form-row text-center">
+   <div class="col-12">
 
-  <div class="form-group">
-   <%= f.submit "投稿", class:"btn btn-sm btn-success" %>
+     <%= f.submit "投稿", class:"btn btn-sm btn-block btn-primary" %>
+
+   </div>
   </div>
   <% end %>
+</div>
