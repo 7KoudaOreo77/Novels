@@ -1,6 +1,6 @@
 <h3>
 <% if @novel_body.present? && @novel_body.errors.any? %>
- <%= @novel_body.errors.count %>error prohibited this obj from being saved:
+ <%= @novel_body.errors.count %>件のエラーがあります。
  <ul>
   <% @novel_body.errors.full_messages.each do |message| %>
    <li><%= message %></li>
