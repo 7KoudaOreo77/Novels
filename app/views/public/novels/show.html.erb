@@ -68,7 +68,7 @@
       <div class>コメント</div>
       <div>
        <%= form_with model: [@novel, @novel_comment], url: public_novel_novel_comments_path(@novel) do |f| %>
-        <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", size: "50x2" %>
+        <%= f.text_area :comment, rows: '5', placeholder: "コメント", size: "50x2" %>
         <%= f.submit "送信" %>
        <% end %>
       </div>
