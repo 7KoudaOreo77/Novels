@@ -1,6 +1,6 @@
 <% if @user.errors.any? %>
  <h4>ユーザー情報の編集</h4>
- <%= @user.errors.count %>error prohibited this obj from being saved:
+ <%= @user.errors.count %>件のエラーがあります。
  <ul>
   <% @user.errors.full_messages.each do |message| %>
    <li><%= message %></li>
