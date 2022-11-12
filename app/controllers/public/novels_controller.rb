@@ -24,7 +24,7 @@ class Public::NovelsController < ApplicationController
 
   def index
     #@novels = Novel.where(tag_id: 4)
-    @novels = Novel.page(params[:page]).per(10)
+    @novels = Novel.page(params[:page]).per(10).order(created_at: :desc)
     @tag_list=Tag.all
     #@novel = Novel.new
     @user = current_user
