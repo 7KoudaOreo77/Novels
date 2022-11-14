@@ -2,7 +2,7 @@ class Admin::NovelCommentsController < ApplicationController
 
   def index
    @comments = NovelComment.all
-   @comments = @comments.page(params[:page]).per(5)
+   @comments = @comments.page(params[:page]).per(5).order(created_at: :desc)
    #@user = User.find(admin_novel_commnet_params)
    #@user =
   end
