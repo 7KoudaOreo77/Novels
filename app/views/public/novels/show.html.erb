@@ -78,7 +78,11 @@
         <span><%= image_tag novel_comment.user.get_profile_image(100,100) %></span>
         <span><%= novel_comment.user.name %></span>
         <span><%= novel_comment.created_at.strftime('%Y/%m/%d') %><%= novel_comment.comment %>
-        </span></br>
+        </span>
+        <% if current_user == @novel.user %>
+         <%= link_to "削除", public_novel_novel_comment_path(@novel,novel_comment), method: :delete, "data-confirm" => "本当に消しますか？" %>
+        <% end %>
+        </br>
        <% end %>
 
 
