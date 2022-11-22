@@ -25,10 +25,19 @@
 
 
         <% if user_signed_in? %>
-         <%= form_with url: search_public_novels_path, local: true, method: :get do |form| %>
-          <%= form.text_field :keyword %>
-          <%= form.submit "検索" %>
+         <% if @keyword.present? %>
+          <%= @keyword.errors.count %>件のエラーがあります。
+          <ul>
+            <% @keyword.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+            <% end %>
+          </ul>
          <% end %>
+           <%= form_with url: search_public_novels_path, local: true, method: :get do |form| %>
+            <%= form.text_field :keyword %>
+            <%= form.submit "検索" %>
+
+        <% end %>
 
          <li>
           <%= link_to public_user_path(current_user.id), class:"nav-link text-light" do %>

@@ -34,6 +34,12 @@ class Novel < ApplicationRecord
   end
 
   def keyword_part(keyword, text)
+    unless keyword.present?
+      errors.full_messages
+      redirect_to index
+
+    end
+
     l = keyword.length + 100
     if text.length > l && text.include?(keyword)
       i = text.index(keyword)
