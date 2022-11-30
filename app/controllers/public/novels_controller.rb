@@ -14,7 +14,7 @@ class Public::NovelsController < ApplicationController
 
     if @novel.save
       @novel.save_tag(tag_list)
-      flash[:hoge] = "Novel was successfully created."
+      flash[:hoge] = "小説が作成されました。"
       redirect_to public_novel_path(@novel.id)
     else
       render :new
@@ -58,7 +58,7 @@ class Public::NovelsController < ApplicationController
 
     if @novel.update(novel_params)
       @novel.save_tag(tag_list)
-      flash[:hoge] = "小説の更新が完了しました。"
+      flash[:hoge] = "小説が更新されました。"
       redirect_to public_novel_path(@novel.id)
     else
       render :edit
