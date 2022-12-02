@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(public_user_params)
-      flash[:hoge] = "You have updated user successfully."
+      flash[:hoge] = "ユーザーが更新されました。"
       redirect_to public_user_path(@user.id)
     else
       render :edit
