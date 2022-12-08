@@ -28,17 +28,17 @@
             <% end %>
            </td>
 
-           <% if @user ==current_user %>
-            <td>
-             <%= link_to "新規", new_public_body_path(novel_id: @novel.id), class:"btn btn-sm btn-primary" %>
-            </td>
-            <td>
-             <%= link_to "編集", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>
-            </td>
-            <td>
-             <%= link_to "削除", public_novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>
-            </td>
-           <% end %>
+           <!--<% if @user ==current_user %>-->
+           <!-- <td>-->
+           <!--  <%= link_to "新規", new_public_body_path(novel_id: @novel.id), class:"btn btn-sm btn-primary" %>-->
+           <!-- </td>-->
+           <!-- <td>-->
+           <!--  <%= link_to "編集", edit_public_novel_path(@novel.id), class:"btn btn-sm btn-success edit_book_id" %>-->
+           <!-- </td>-->
+           <!-- <td>-->
+           <!--  <%= link_to "削除", public_novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-sm btn-danger destroy_book_id"  %>-->
+           <!-- </td>-->
+           <!--<% end %>-->
 
 
 
