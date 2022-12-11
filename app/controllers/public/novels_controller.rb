@@ -19,6 +19,22 @@ class Public::NovelsController < ApplicationController
     else
       render :new
     end
+    
+    # 投稿ボタンを押下した場合
+    if params[:post]
+      if @post_recipe.save(context: :publicize)
+        redirect_to post_recipe_path(@post_recipe), notice: "レシピを投稿しました！"
+      else
+        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+      end
+    # 下書きボタンを押下した場合
+    else
+      if @post_recipe.update(is_draft: true)
+        redirect_to user_path(current_user), notice: "レシピを下書き保存しました！"
+      else
+        render :new, alert: "登録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+      end
+    end
 
   end
 
