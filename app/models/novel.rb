@@ -73,6 +73,14 @@ class Novel < ApplicationRecord
     end
   end
 
+  with_options presence: true, on: :publicize do
+    validates :recipe_image
+    validates :serving
+    validates :title
+    validates :introduction
+  end
+  validates :title, length: { maximum: 14 }, on: :publicize
+  validates :introduction, length: { maximum: 80 }, on: :publicize
 
 
 end
