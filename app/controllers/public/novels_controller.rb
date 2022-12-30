@@ -63,38 +63,6 @@ class Public::NovelsController < ApplicationController
     else
       render :edit
     end
-
-
-    @post_recipe = PostRecipe.find(params[:id])
-    # ①下書きレシピの更新（公開）の場合
-    if params[:publicize_draft]
-      # レシピ公開時にバリデーションを実施
-      # updateメソッドにはcontextが使用できないため、公開処理にはattributesとsaveメソッドを使用する
-      @post_recipe.attributes = post_recipe_params.merge(is_draft: false)
-      if @post_recipe.save(context: :publicize)
-        redirect_to post_recipe_path(@post_recipe.id), notice: "下書きの小説を公開しました！"
-      else
-        @post_recipe.is_draft = true
-        render :edit, alert: "小説を公開できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
-      end
-      # ②公開済みレシピの更新の場合
-    elsif params[:update_post]
-      @post_recipe.attributes = post_recipe_params
-      if @post_recipe.save(context: :publicize)
-        redirect_to post_recipe_path(@post_recipe.id), notice: "小説を更新しました！"
-      else
-        render :edit, alert: "小説を更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
-      end
-    # ③下書きレシピの更新（非公開）の場合
-    else
-      if @post_recipe.update(post_recipe_params)
-        redirect_to post_recipe_path(@post_recipe.id), notice: "下書き小説を更新しました！"
-      else
-        render :edit, alert: "更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
-      end
-    end
-
-
   end
 
 
