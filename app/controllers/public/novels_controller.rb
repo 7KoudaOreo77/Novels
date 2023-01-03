@@ -58,7 +58,7 @@ class Public::NovelsController < ApplicationController
 
     if @novel.update(novel_params)
       @novel.save_tag(tag_list)
-      flash[:hoge] = "小説が更新されました。"
+      flash[:hoge] = "小説が更新されました。"a
       redirect_to public_novel_path(@novel.id)
     else
       render :edit
