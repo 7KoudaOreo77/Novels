@@ -11,6 +11,8 @@ class Novel < ApplicationRecord
 
   validates :title, presence: true
   validates_associated :tags
+  
+  
 
 
   def get_image

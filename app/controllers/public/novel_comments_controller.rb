@@ -3,8 +3,11 @@ class Public::NovelCommentsController < ApplicationController
     novel = Novel.find(params[:novel_id])
     comment = current_user.novel_comments.new(public_novel_comment_params)
     comment.novel_id = novel.id
-    comment.save
-    redirect_to public_novel_path(novel)
+    if comment.save
+     redirect_to public_novel_path(novel)
+    else
+     render 'novel/show'
+    end
   end
 
   def destroy
