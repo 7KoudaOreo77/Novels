@@ -6,7 +6,7 @@ class Public::NovelCommentsController < ApplicationController
     if comment.save
      redirect_to public_novel_path(novel)
     else
-     redirect_to public_novel_path(novel)
+     render "novels/show"
     end
   end
 
